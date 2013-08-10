@@ -11,7 +11,7 @@ class Earth extends Entity
   constructor: ->
     @x = 0
     @y = 0
-    @radius = 80
+    @radius = 100
 
     super
 
@@ -43,8 +43,8 @@ class Earth extends Entity
     globeScale = translate.screen ratio
     @globe.scaleX = globeScale
     @globe.scaleY = globeScale
-    @globe.x = -@radius
-    @globe.y = -@radius
+    @globe.x = translate.screen -@radius
+    @globe.y = translate.screen -@radius
 
   updateSatellite: ->
     satelliteScale = translate.screen .2
@@ -57,6 +57,6 @@ class Earth extends Entity
     @satellite.scaleY = satelliteScale
 
     @satellite.regX = @satellite.image.width / 2
-    @satellite.regY = @satellite.image.height + @radius / satelliteScale - offsetY
+    @satellite.regY = @satellite.image.height + (translate.screen @radius / satelliteScale) - offsetY
 
 module.exports = Earth
