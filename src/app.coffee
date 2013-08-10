@@ -16,7 +16,11 @@ $ ->
   # define entities used on main stage
   entities =
     earth: new Earth()
-    particles: new Particles()
+    particles1: new Particles()
+    particles2: new Particles()
+    particles3: new Particles()
+    particles4: new Particles()
+    particles5: new Particles()
 
   # add entities to stage
   for name, entity of entities
