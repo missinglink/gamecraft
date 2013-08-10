@@ -6,6 +6,7 @@ Orbiter = require './models/Orbiter'
 Input = require './Input'
 Loop = require './models/Loop'
 controls = require './controls'
+status = require './status'
 
 $ ->
   left_pressed = false
@@ -13,6 +14,12 @@ $ ->
 
   # initialize stage
   stage.init()
+
+  # initialise status (life)
+  status.init()
+
+  ($ 'body').on 'click', ->
+    status.removeLife 5
 
   # define entities used on main stage
   entities =
