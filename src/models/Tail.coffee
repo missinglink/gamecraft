@@ -14,7 +14,7 @@ class Tail extends Entity
       font:
         style: 'bold'
         size: '16px'
-        face: 'Arial'
+        face: 'courier'
       color: 'green'
       width: 14
       height: 14
@@ -53,6 +53,7 @@ class Tail extends Entity
 
     @tail.rotation = @direction
     @tail.text = Math.round Math.random() * 1
+    @tail.text = String.fromCharCode( Math.round( Math.random() * 93 ) + 33 )
     # @tail.text = '☺'
     # @tail.x = @change.x
     # @tail.y = @change.y
