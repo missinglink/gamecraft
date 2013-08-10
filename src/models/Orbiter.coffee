@@ -5,26 +5,28 @@ Entity = require './Entity'
 Gravity = require '../physics/Gravity'
 Thrust = require '../physics/Thrust'
 Tail = require './Tail'
+geometry = require '../helpers/geometry'
 
 earthRadius = 100
 
 class Orbiter extends Entity
 
-  constructor: (@options, thrust_speed = 3, thrust_angle = 90) ->
+  constructor: (@options, @thrust_speed = 3, thrust_angle = 90) ->
     super()
 
     # @rotationAngle = 0
     while not @rotationAngle? or @rotationAngle is 0
       @rotationAngle = Math.round( Math.random() * 1 )-0.5
     
-    @thrust = new Thrust (translate.screen thrust_speed), thrust_angle
+    @thrust = new Thrust (translate.screen @thrust_speed), thrust_angle
     @gravity = new Gravity 10, 0, 0
     @tail = new Tail()
     @stage.addChild @tail.stage
 
-    setInterval ( => @tail.tick @particle ), 50
+    @status = 0
 
-    @spinSpeed = 30 * thrust_speed
+    if @status is 1
+      setInterval ( => @tail.tick @particle ), 50
 
   render: ->
 
@@ -41,13 +43,15 @@ class Orbiter extends Entity
     @particle.y = 0
     @particle.image.onload = => @particle.loaded = true
 
+    @particle.alpha = 0
+
     @stage.addChild @particle
 
   tick: ->
     super()
-    @thrust.setSpeed translate.screen( @spinSpeed * @lastFrameLength / 1000 )
+    @thrust.setSpeed @thrust_speed
 
-    # @thrust.setSpeed( @thrust.speed-0.01 )
+    @thrust.setSpeed( @thrust.speed-0.01 )
     @thrust.setAngle( @thrust.angle+@rotationAngle )
 
     @stage.x = translate.x 0
@@ -55,5 +59,18 @@ class Orbiter extends Entity
 
     # @gravity.tick @particle
     @thrust.tick @particle
+
+    origin = x: 0, y: 0
+    x = translate.world @particle.x
+    y = translate.world @particle.y
+    distance = geometry.getDistance origin, x: x, y: y
+    
+    if @status is 0 and distance > earthRadius
+      @particle.alpha = 1
+      @status = 1
+
+    if @status is 1 and distance < earthRadius
+      @status = 2
+      console.log 'HIT'
 
 module.exports = Orbiter

@@ -4,7 +4,7 @@ Orbiter = require './Orbiter'
 loopOn = false
 
 types =
-  email: { asset: 'email', speed: { min: 10, max: 15 } }
+  email: { asset: 'email', speed: { min: 3, max: 5 } }
   upload: { asset: 'upload', speed: { min: 15, max: 20 } }
 
 levels = [
