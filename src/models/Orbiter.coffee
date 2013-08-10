@@ -51,7 +51,7 @@ class Orbiter extends Entity
     @stage.x = translate.x 0
     @stage.y = translate.y 0
 
-    # @gravity.tick @particle
+    @gravity.tick @particle
     @thrust.tick @particle
 
 module.exports = Orbiter
