@@ -18,9 +18,6 @@ $ ->
   # initialise status (life)
   status.init()
 
-  ($ 'body').on 'click', ->
-    status.removeLife 5
-
   # define entities used on main stage
   entities =
     earth: new Earth()
