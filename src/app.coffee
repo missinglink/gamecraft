@@ -5,7 +5,14 @@ Loop = require './models/Loop'
 
 $ ->
   stage.init()
-  stage.add new Earth()
+
+  objects = {
+    earth: new Earth()
+  }
+
+  stage.add objects.earth
   gameLoop = new Loop
-  gameLoop.use -> stage.getStage().update()
+  gameLoop.use ->
+    objects.earth.render()
+    stage.getStage().update()
   gameLoop.play()
