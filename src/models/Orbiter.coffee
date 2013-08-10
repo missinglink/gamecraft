@@ -15,13 +15,10 @@ class Orbiter extends Entity
 
   constructor: ( @level = 0, thrust_speed = 3, thrust_angle = 90 ) ->
     super()
-
-    @coeff = 0
-    while not @coeff
-      @cooef = Math.round( Math.random() * 4 )-2
+    @cooef = Math.round( Math.random() * 4 )-2
     
     @thrust = new Thrust (translate.screen thrust_speed), thrust_angle
-    @spinSpeed = 200 / thrust_speed
+    @spinSpeed = 60 * thrust_speed
 
   tick: ->
 
