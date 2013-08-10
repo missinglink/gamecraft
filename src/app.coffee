@@ -1,10 +1,13 @@
 
-stage = new createjs.Stage("game-stage");
-circle = new createjs.Shape();
-circle.graphics.beginFill("red").drawCircle(0, 0, 40);
+window.onload = (e) ->
 
-circle.x = circle.y = 50;
+  stage = new createjs.Stage("game-stage");
+  circle = new createjs.Shape();
+  circle.graphics.beginFill("red").drawCircle(0, 0, 40);
 
-stage.addChild(circle);
+  circle.x = circle.y = 50;
 
-stage.update();
+  stage.addChild(circle);
+
+  stage.update();
+
