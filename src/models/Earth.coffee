@@ -1,4 +1,6 @@
 
+stage = require '../stage'
+
 class Earth extends createjs.Shape
 
   constructor: ->
@@ -8,9 +10,9 @@ class Earth extends createjs.Shape
 
     @graphics.beginFill('red').drawCircle 0, 0, radius
 
-    # @x = Math.round( $('body').width() / 2 )
-    # @y = Math.round( $('body').height() / 2 )
-
+    @x = Math.round( $('body').width() / 2 )
+    @y = Math.round( $('body').height() / 2 )
+    console.log stage
     console.log @x, @y
 
 module.exports = Earth
