@@ -21,7 +21,7 @@ $ ->
   # define entities used on main stage
   entities =
     earth: new Earth()
-    orbiter: new Orbiter()
+    orbiter1: new Orbiter()
     # particles1: new Particles()
 
   # add entities to stage
