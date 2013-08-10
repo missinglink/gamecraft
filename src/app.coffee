@@ -22,13 +22,13 @@ $ ->
 
   gameModel = new GameModel()
 
-  itemsFactory = new ItemsFactory()
+  @itemsFactory = new ItemsFactory stage
 
   # define entities used on main stage
   entities =
     earth: new Earth()
-    orbiter1: new Orbiter()
-    orbiter2: new Orbiter( 3, 0 )
+    # orbiter1: new Orbiter()
+    # orbiter2: new Orbiter( 3, 0 )
     # orbiter3: new Orbiter( 1, 5, 45 )
     # orbiter4: new Orbiter( 2, 4, 90 )
     # orbiter5: new Orbiter( 0, 3, 135 )
@@ -45,7 +45,9 @@ $ ->
 
   # main loop
   gameLoop = new Loop
-  gameLoop.use ->
+  gameLoop.use =>
+
+    @itemsFactory.tick()
 
     timeDelta = gameLoop.getTimeDelta()
     gameModel.tick(timeDelta)

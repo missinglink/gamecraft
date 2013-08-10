@@ -5,11 +5,9 @@ Entity = require './Entity'
 # Gravity = require '../physics/Gravity'
 Thrust = require '../physics/Thrust'
 
-defaults = { asset: 'email' }
-
 class Orbiter extends Entity
 
-  constructor: (thrust_speed = 3, thrust_angle = 90, @options = defaults) ->
+  constructor: (@options, thrust_speed = 3, thrust_angle = 90) ->
     super()
 
     # @rotationAngle = 0
