@@ -8,12 +8,12 @@ class Particles extends Entity
   constructor: ->
     @x = 0
     @y = 0
-    @radius = 60
+    @radius = 5
 
     super
 
   tick: ->
-    @stage.rotation+=10
+    # @stage.rotation+=10
 
   render: ->
 
