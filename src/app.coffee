@@ -58,8 +58,8 @@ $ ->
     stage.getStage().update()
 
     if gameModel.isGameOver()
-      alert 'GAME FUCKING OVER!'
-      gameLoop.pause()
+      console.log 'GAME FUCKING OVER!'
+      # gameLoop.pause()
 
   gameLoop.play()
 
