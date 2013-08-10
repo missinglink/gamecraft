@@ -13,12 +13,19 @@ class Earth extends Entity
     super
 
   render: ->
-    @sprite = new createjs.Shape
+    @globe = new createjs.Shape()
 
-    x = Math.round stage.getSize().width / 2
-    y = Math.round stage.getSize().height / 2
+    @globe.graphics.beginFill('red').drawCircle 0, 0, translate.screen @radius
 
-    console.log '--', (translate.screen x, y, @radius)
-    @sprite.graphics.beginFill('red').drawCircle (translate.screen x, y, @radius)
+    @stage.x = translate.x 0
+    @stage.y = translate.y 0
+
+    @stage.addChild @globe
+    
+    @satellite = new createjs.Bitmap 'img/satellite-dish.png'
+    @satellite.x = -50
+    @satellite.y = -220
+
+    @stage.addChild @satellite
 
 module.exports = Earth

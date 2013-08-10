@@ -15,7 +15,7 @@ module.exports =
     el.attr size
     stage = new createjs.Stage el[0]
 
-  add: (entity) -> stage.addChild entity.sprite
+  add: (entity) -> stage.addChild entity.stage
 
   getStage: -> stage
 
