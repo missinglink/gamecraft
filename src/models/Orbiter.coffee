@@ -4,6 +4,7 @@ translate = require '../translate'
 Entity = require './Entity'
 Gravity = require '../physics/Gravity'
 Thrust = require '../physics/Thrust'
+Tail = require './Tail'
 
 class Orbiter extends Entity
 
@@ -16,18 +17,10 @@ class Orbiter extends Entity
     
     @thrust = new Thrust (translate.screen thrust_speed), thrust_angle
     @gravity = new Gravity 10, 0, 0
+    @tail = new Tail()
+    @stage.addChild @tail.stage
+
     @spinSpeed = 30 * thrust_speed
-
-  tick: ->
-
-    # @thrust.setSpeed( @thrust.speed-0.01 )
-    @thrust.setAngle( @thrust.angle+1 )
-
-    @stage.x = translate.x 0
-    @stage.y = translate.y 0
-
-    # @gravity.tick @particle
-    @thrust.tick @particle
 
   render: ->
 
@@ -58,5 +51,6 @@ class Orbiter extends Entity
 
     # @gravity.tick @particle
     @thrust.tick @particle
+    if Math.random() > 0.9 then @tail.tick @particle
 
 module.exports = Orbiter
