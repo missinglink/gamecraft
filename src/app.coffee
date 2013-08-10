@@ -28,7 +28,7 @@ $ ->
   entities =
     earth: new Earth()
     orbiter1: new Orbiter()
-    orbiter2: new Orbiter( 3, 0 )
+    orbiter2: new Orbiter( 1, 2, 0 )
     # orbiter3: new Orbiter( 1, 5, 45 )
     # orbiter4: new Orbiter( 2, 4, 90 )
     # orbiter5: new Orbiter( 0, 3, 135 )

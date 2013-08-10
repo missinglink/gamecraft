@@ -14,7 +14,7 @@ class Orbiter extends Entity
 
     # @rotationAngle = 0
     while not @rotationAngle? or @rotationAngle is 0
-      @rotationAngle = Math.round( Math.random() * 4 )-2
+      @rotationAngle = Math.round( Math.random() * 1 )-0.5
     
     @thrust = new Thrust (translate.screen thrust_speed), thrust_angle
     @gravity = new Gravity 10, 0, 0
