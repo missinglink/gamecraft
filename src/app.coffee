@@ -9,25 +9,29 @@ Loop = require './models/Loop'
 $ ->
   stage.init()
 
-  objects = {
+  # define entities used on main stage
+  entities =
     earth: new Earth()
     particles: new Particles()
-  }
 
-  for name, object of objects
-    stage.add object
+  # add entities to stage
+  for name, entity of entities
+    stage.add entity
 
+  # main loop
   gameLoop = new Loop
-
   gameLoop.use ->
 
-    for name, object of objects
-      object.tick()
+    # update entities
+    for name, entity of entities
+      entity.tick()
 
+    # repaint stage
     stage.getStage().update()
 
   gameLoop.play()
 
+  # input controls
   input = new Input
   input.arrow_left_handler = () ->
   	console.log 'should rotate anticlockwise'
