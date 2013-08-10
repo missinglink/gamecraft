@@ -6,6 +6,8 @@ Input = require './Input'
 Loop = require './models/Loop'
 
 $ ->
+  left_pressed = false
+  right_pressed = false
 
   # initialize stage
   stage.init()
@@ -34,7 +36,15 @@ $ ->
 
   # input controls
   input = new Input
-  input.arrow_left_handler = () ->
-  	console.log 'should rotate anticlockwise'
-  input.arrow_right_handler = () ->
-  	console.log 'should rotate clockwise'
+  input.arrow_left_down_handler = () ->
+    console.log 'left down'
+    left_pressed = true
+  input.arrow_left_up_handler = () ->
+    console.log 'left up'
+    left_pressed = false
+  input.arrow_right_down_handler = () ->
+    console.log 'right down'
+    right_pressed = true
+  input.arrow_right_up_handler = () ->
+    console.log 'right up'
+    right_pressed = false

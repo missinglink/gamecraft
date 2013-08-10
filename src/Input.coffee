@@ -5,22 +5,25 @@ KEY_RIGHT = 39
 class Input
 
 	constructor: () ->
-		@arrow_left_handler = () ->
-			console.log 'Input: left key'
-		@arrow_right_handler = () ->
-			console.log 'Input: right key'
+		@arrow_left_down_handler = () ->
+			console.log 'Input: left key down'
+		@arrow_left_up_handler = () ->
+			console.log 'Input: left key up'			
+		@arrow_right_down_handler = () ->
+			console.log 'Input: right key down'
+		@arrow_right_up_handler = () ->
+			console.log 'Input: right key up'
 
 		$(document).keydown (e) =>
 			if e.keyCode == KEY_LEFT
-				@arrow_left_handler()
+				@arrow_left_down_handler()
 			else if e.keyCode == KEY_RIGHT
-				@arrow_right_handler()
+				@arrow_right_down_handler()
 
-	# shortcuts
-	key_arrow_left_event: ->
-		@arrow_left_handler()
-
-	key_arrow_right_event: ->
-		@arrow_right_handler()
+		$(document).keyup (e) =>
+			if e.keyCode == KEY_LEFT
+				@arrow_left_up_handler()
+			else if e.keyCode == KEY_RIGHT
+				@arrow_right_up_handler()
 
 module.exports = Input
