@@ -57,9 +57,9 @@ $ ->
     # repaint stage
     stage.getStage().update()
 
-    if gameModel.isGameOver()
-      alert 'GAME FUCKING OVER!'
-      gameLoop.pause()
+    # if gameModel.isGameOver()
+      # alert 'GAME FUCKING OVER!'
+      # gameLoop.pause()
 
   gameLoop.play()
 
