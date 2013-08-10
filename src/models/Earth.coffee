@@ -8,7 +8,7 @@ class Earth extends Entity
   constructor: ->
     @x = 0
     @y = 0
-    @radius = 100
+    @radius = 60
 
     super
 
@@ -23,8 +23,10 @@ class Earth extends Entity
     @stage.addChild @globe
     
     @satellite = new createjs.Bitmap 'img/satellite-dish.png'
-    @satellite.x = -50
-    @satellite.y = -220
+    @satellite.x = - @radius / 2
+    @satellite.y = - @radius / 2
+    @satellite.scaleX = translate.screen .7
+    @satellite.scaleY = translate.screen .7
 
     @stage.addChild @satellite
 
