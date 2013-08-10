@@ -25,8 +25,7 @@ class Orbiter extends Entity
 
     @status = 0
 
-    if @status is 1
-      setInterval ( => @tail.tick @particle ), 50
+    setInterval ( => if @status is 1 then @tail.tick @particle ), 50
 
   render: ->
 
@@ -72,5 +71,6 @@ class Orbiter extends Entity
     if @status is 1 and distance < earthRadius
       @status = 2
       console.log 'HIT'
+      angle = Math.atan @particle.y, @particle.x
 
 module.exports = Orbiter
