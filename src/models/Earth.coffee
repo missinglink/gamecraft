@@ -12,6 +12,9 @@ class Earth extends Entity
 
     super
 
+  tick: ->
+    @stage.rotation+=10
+
   render: ->
     @globe = new createjs.Shape()
 
@@ -19,8 +22,6 @@ class Earth extends Entity
 
     @stage.x = translate.x 0
     @stage.y = translate.y 0
-
-    @stage.rotation+=10
 
     @stage.addChild @globe
     
