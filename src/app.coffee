@@ -26,13 +26,13 @@ $ ->
     earth: new Earth()
     orbiter1: new Orbiter()
     orbiter2: new Orbiter( 0, 3, 0 )
-    orbiter3: new Orbiter( 1, 2, 45 )
-    orbiter4: new Orbiter( 2, 1, 90 )
-    orbiter5: new Orbiter( 0, 3, 135 )
-    orbiter6: new Orbiter( 1, 2, 180 )
-    orbiter7: new Orbiter( 0, 1, 225 )
-    orbiter8: new Orbiter( 2, 3, 270 )
-    orbiter9: new Orbiter( 0, 2, 315 )
+    # orbiter3: new Orbiter( 1, 5, 45 )
+    # orbiter4: new Orbiter( 2, 4, 90 )
+    # orbiter5: new Orbiter( 0, 3, 135 )
+    # orbiter6: new Orbiter( 1, 5, 180 )
+    # orbiter7: new Orbiter( 0, 4, 225 )
+    # orbiter8: new Orbiter( 2, 3, 270 )
+    # orbiter9: new Orbiter( 0, 5, 315 )
     # orbiter4: new Orbiter()
     # particles1: new Particles()
 
@@ -57,9 +57,9 @@ $ ->
     # repaint stage
     stage.getStage().update()
 
-    if gameModel.isGameOver()
+    # if gameModel.isGameOver()
       # alert 'GAME FUCKING OVER!'
-      gameLoop.pause()
+      # gameLoop.pause()
 
   gameLoop.play()
 
