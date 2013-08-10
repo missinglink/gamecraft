@@ -1,6 +1,7 @@
 
 stage = require './stage'
 Earth = require './models/Earth'
+Particles = require './models/Particles'
 Loop = require './models/Loop'
 
 $ ->
@@ -8,9 +9,12 @@ $ ->
 
   objects = {
     earth: new Earth()
+    particles: new Particles()
   }
 
-  stage.add objects.earth
+  for name, object of objects
+    stage.add object
+
   gameLoop = new Loop
 
   gameLoop.use ->
