@@ -5,6 +5,8 @@ Entity = require './Entity'
 # Gravity = require '../physics/Gravity'
 Thrust = require '../physics/Thrust'
 
+spinSpeed = 200
+
 class Orbiter extends Entity 
 
   constructor: ( thrust_speed=3, thrust_angle=90 ) ->
@@ -38,6 +40,22 @@ class Orbiter extends Entity
     @particle.y = 0
     @particle.image.onload = => @particle.loaded = true
 
+    super
+
     @stage.addChild @particle
+
+  tick: ->
+    super
+
+    @thrust.setSpeed translate.screen( spinSpeed * @lastFrameLength / 1000 )
+
+    # @thrust.setSpeed( @thrust.speed-0.01 )
+    @thrust.setAngle( @thrust.angle+1 )
+
+    @stage.x = translate.x 0
+    @stage.y = translate.y 0
+
+    # @gravity.tick @particle
+    @thrust.tick @particle
 
 module.exports = Orbiter

@@ -20,24 +20,20 @@ class Earth extends Entity
     super
 
   tick: ->
-    if @lastUpdate?
-      now = new Date().getTime()
-      diff = now - @lastUpdate
+    super
 
-      if controls.getDirection() is 0
-        if @currentSpeed < 0 then @currentSpeed += brake
-        else if @currentSpeed > 0 then @currentSpeed -= brake
+    if controls.getDirection() is 0
+      if @currentSpeed < 0 then @currentSpeed += brake
+      else if @currentSpeed > 0 then @currentSpeed -= brake
 
-        if (Math.abs @currentSpeed) < .2 then @currentSpeed = 0
-      else
-        @currentSpeed += acceleration * controls.getDirection()
+      if (Math.abs @currentSpeed) < .2 then @currentSpeed = 0
+    else
+      @currentSpeed += acceleration * controls.getDirection()
 
-      if @currentSpeed > maxSpeed then @currentSpeed = maxSpeed
-      else if @currentSpeed < -maxSpeed then @currentSpeed = -maxSpeed
+    if @currentSpeed > maxSpeed then @currentSpeed = maxSpeed
+    else if @currentSpeed < -maxSpeed then @currentSpeed = -maxSpeed
 
-      @satellite.rotation += diff * @currentSpeed * speedMultiplier / 1000
-
-    @lastUpdate = new Date().getTime()
+    @satellite.rotation += @lastFrameLength * @currentSpeed * speedMultiplier / 1000
 
   render: ->
 

@@ -28,9 +28,13 @@ class Loop
     if @playing then requestAnimationFrame @next
 
   getFPS: =>
-    if not @lastUpdate then @lastUpdate = new Date().getTime()
-    delta = ( new Date().getTime() - @lastCalledTime ) / 1000
-    @lastCalledTime = new Date().getTime()
-    @fps = 1 / delta
+    @lastUpdate = new Date().getTime()
+    @delta = ( new Date().getTime() - @lastCalledTime ) / 1000
+    @lastCalledTime = new Date().getTime()    
+    @fps = 1 / @delta
+
+  getLastUpdate: => @lastUpdate
+
+  getTimeDelta: => @delta
 
 module.exports = Loop
