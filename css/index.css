@@ -1,1 +1,1 @@
-html,body{margin:0;padding:0;min-height:100%}body{background:#222}#game-stage{border:solid 1px red;box-sizing:border-box}
+html,body{margin:0;padding:0;min-height:100%}body{background:#222;overflow:hidden}#game-stage{box-sizing:border-box;margin:0;padding:0}
