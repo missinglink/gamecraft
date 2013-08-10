@@ -18,7 +18,7 @@ class Orbiter extends Entity
     @cooef = Math.round( Math.random() * 4 )-2
     
     @thrust = new Thrust (translate.screen thrust_speed), thrust_angle
-    @spinSpeed = 60 * thrust_speed
+    @spinSpeed = 30 * thrust_speed
 
   tick: ->
 
