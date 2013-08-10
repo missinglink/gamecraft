@@ -1,18 +1,24 @@
 
 stage = require '../stage'
+translate = require '../translate'
+Entity = require './Entity'
 
-class Earth extends createjs.Shape
+class Earth extends Entity
 
   constructor: ->
+    @x = 0
+    @y = 0
+    @radius = 100
+
     super
 
-    radius = 100
+  render: ->
+    @sprite = new createjs.Shape
 
-    @graphics.beginFill('red').drawCircle 0, 0, radius
+    x = Math.round stage.getSize().width / 2
+    y = Math.round stage.getSize().height / 2
 
-    @x = Math.round( $('body').width() / 2 )
-    @y = Math.round( $('body').height() / 2 )
-
-    console.log @x, @y
+    console.log '--', (translate.screen x, y, @radius)
+    @sprite.graphics.beginFill('red').drawCircle (translate.screen x, y, @radius)
 
 module.exports = Earth
