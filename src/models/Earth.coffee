@@ -4,7 +4,10 @@ translate = require '../translate'
 Entity = require './Entity'
 controls = require '../controls'
 
-moveSpeed = 50
+speedMultiplier = 50
+maxSpeed = 4
+acceleration = .6
+brake = .3
 
 class Earth extends Entity
 
@@ -12,6 +15,7 @@ class Earth extends Entity
     @x = 0
     @y = 0
     @radius = 100
+    @currentSpeed = 0
 
     super
 
@@ -20,7 +24,18 @@ class Earth extends Entity
       now = new Date().getTime()
       diff = now - @lastUpdate
 
-      @satellite.rotation += diff * controls.getDirection() * moveSpeed / 1000
+      if controls.getDirection() is 0
+        if @currentSpeed < 0 then @currentSpeed += brake
+        else if @currentSpeed > 0 then @currentSpeed -= brake
+
+        if (Math.abs @currentSpeed) < .2 then @currentSpeed = 0
+      else
+        @currentSpeed += acceleration * controls.getDirection()
+
+      if @currentSpeed > maxSpeed then @currentSpeed = maxSpeed
+      else if @currentSpeed < -maxSpeed then @currentSpeed = -maxSpeed
+
+      @satellite.rotation += diff * @currentSpeed * speedMultiplier / 1000
 
     @lastUpdate = new Date().getTime()
 
