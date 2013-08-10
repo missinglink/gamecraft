@@ -3,6 +3,8 @@ stage = require '../stage'
 translate = require '../translate'
 Entity = require './Entity'
 
+spinSpeed = 200
+
 class Gravity
 
   constructor: ( @pull, @x, @y ) -> null
@@ -60,13 +62,16 @@ class Orbiter extends Entity
 
     # @trajectory = speed: 2, angle: 90
     @gravity = new Gravity (translate.screen 2), 0, 0
-    @thrust = new Thrust (translate.screen 3), 90
+    @thrust = new Thrust 0, 0, 90
 
     super
 
     @stage.addChild @particle
 
   tick: ->
+    super
+
+    @thrust.setSpeed translate.screen( spinSpeed * @lastFrameLength / 1000 )
 
     # @thrust.setSpeed( @thrust.speed-0.01 )
     @thrust.setAngle( @thrust.angle+1 )
