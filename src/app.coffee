@@ -4,6 +4,7 @@ Earth = require './models/Earth'
 Particles = require './models/Particles'
 Input = require './Input'
 Loop = require './models/Loop'
+controls = require './controls'
 
 $ ->
   left_pressed = false
@@ -36,15 +37,9 @@ $ ->
 
   # input controls
   input = new Input
-  input.arrow_left_down_handler = () ->
-    console.log 'left down'
-    left_pressed = true
-  input.arrow_left_up_handler = () ->
-    console.log 'left up'
-    left_pressed = false
-  input.arrow_right_down_handler = () ->
-    console.log 'right down'
-    right_pressed = true
-  input.arrow_right_up_handler = () ->
-    console.log 'right up'
-    right_pressed = false
+
+  input.arrow_left_down_handler = -> controls.setDirection -1
+  input.arrow_right_down_handler = -> controls.setDirection 1
+
+  input.arrow_left_up_handler = -> controls.setDirection 0
+  input.arrow_right_up_handler = -> controls.setDirection 0

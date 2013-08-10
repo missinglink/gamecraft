@@ -2,6 +2,9 @@
 stage = require '../stage'
 translate = require '../translate'
 Entity = require './Entity'
+controls = require '../controls'
+
+moveSpeed = 50
 
 class Earth extends Entity
 
@@ -13,7 +16,13 @@ class Earth extends Entity
     super
 
   tick: ->
-    @satellite.rotation += .3
+    if @lastUpdate?
+      now = new Date().getTime()
+      diff = now - @lastUpdate
+
+      @satellite.rotation += diff * controls.getDirection() * moveSpeed / 1000
+
+    @lastUpdate = new Date().getTime()
 
   render: ->
 
