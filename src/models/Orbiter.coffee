@@ -7,9 +7,15 @@ Thrust = require '../physics/Thrust'
 
 spinSpeed = 200
 
-class Orbiter extends Entity 
+levels = [
+    { asset: 'email' }
+    { asset: 'key' }
+    { asset: 'upload' }
+]
 
-  constructor: ( thrust_speed, thrust_angle=90 ) ->
+class Orbiter extends Entity
+
+  constructor: ( @level = 0, thrust_speed = 3, thrust_angle = 90 ) ->
     super()
     # @gravity = new Gravity (translate.screen 2), 0, 0
     @thrust = new Thrust (translate.screen thrust_speed), thrust_angle
@@ -30,7 +36,8 @@ class Orbiter extends Entity
     @x = 0
     @y = 0
 
-    @particle = new createjs.Bitmap 'img/data-email.png'
+    assetName = levels[@level].asset
+    @particle = new createjs.Bitmap "img/data-#{assetName}.png"
     @particle.loaded = false
 
     @particle.scaleX = translate.screen .5
