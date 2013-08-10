@@ -37,9 +37,20 @@ $ ->
 
   # input controls
   input = new Input
+  moving = false
 
-  input.arrow_left_down_handler = -> controls.setDirection -1
-  input.arrow_right_down_handler = -> controls.setDirection 1
+  input.arrowLeftDownHandler = -> 
+    if not moving
+      controls.setDirection -1
+      moving = true
+  input.arrowRightDownHandler = -> 
+    if not moving
+      controls.setDirection 1
+      moving = true
 
-  input.arrow_left_up_handler = -> controls.setDirection 0
-  input.arrow_right_up_handler = -> controls.setDirection 0
+  input.arrowLeftUpHandler = -> 
+    controls.setDirection 0
+    moving = false
+  input.arrowRightUpHandler = -> 
+    controls.setDirection 0
+    moving = false
