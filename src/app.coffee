@@ -12,7 +12,12 @@ $ ->
 
   stage.add objects.earth
   gameLoop = new Loop
+
   gameLoop.use ->
-    objects.earth.render()
+
+    for name, object of objects
+      object.tick()
+
     stage.getStage().update()
+
   gameLoop.play()
