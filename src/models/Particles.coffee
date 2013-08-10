@@ -13,7 +13,7 @@ class Particles extends Entity
     super
 
   tick: ->
-    # @stage.rotation+=10
+    @stage.rotation+=10
 
   render: ->
 
