@@ -25,6 +25,15 @@ $ ->
   entities =
     earth: new Earth()
     orbiter1: new Orbiter()
+    orbiter2: new Orbiter( 3, 0 )
+    orbiter3: new Orbiter( 2, 45 )
+    orbiter4: new Orbiter( 1, 90 )
+    orbiter5: new Orbiter( 3, 135 )
+    orbiter6: new Orbiter( 2, 180 )
+    orbiter7: new Orbiter( 1, 225 )
+    orbiter8: new Orbiter( 3, 270 )
+    orbiter9: new Orbiter( 2, 315 )
+    # orbiter4: new Orbiter()
     # particles1: new Particles()
 
   # add entities to stage
