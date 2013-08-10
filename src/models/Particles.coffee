@@ -21,6 +21,9 @@ class Particles extends Entity
 
     return null unless @ready
 
+    @stage.x = translate.x 0
+    @stage.y = translate.y 0
+
     emitter = new createjs.ParticleEmitter(@particleImage);
     emitter.position = new createjs.Point(0, 0);
     emitter.emitterType = createjs.ParticleEmitterType.Emit;
