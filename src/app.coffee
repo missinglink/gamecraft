@@ -2,7 +2,7 @@
 window.onload = (e) ->
 
   stage = require './stage'
-  earth = require './shapes/earth'
+  Earth = require './models/Earth'
 
-  stage.addChild earth
+  stage.addChild new Earth()
   stage.update()
