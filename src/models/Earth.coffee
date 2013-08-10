@@ -1,23 +1,31 @@
 
-class Earth extends createjs.Stage
+stage = require '../stage'
+translate = require '../translate'
+Entity = require './Entity'
+
+class Earth extends Entity
 
   constructor: ->
+    @x = 0
+    @y = 0
+    @radius = 100
+
     super
 
-    radius = 100
-
+  render: ->
     @globe = new createjs.Shape()
 
-    @globe.graphics.beginFill('red').drawCircle 0, 0, radius
-    @x = Math.round( $('body').width() / 2 )
-    @y = Math.round( $('body').height() / 2 )
+    @globe.graphics.beginFill('red').drawCircle 0, 0, translate.screen @radius
 
-    @addChild @globe
+    @stage.x = translate.x 0
+    @stage.y = translate.y 0
+
+    @stage.addChild @globe
     
     @satellite = new createjs.Bitmap 'img/satellite-dish.png'
     @satellite.x = -50
     @satellite.y = -220
 
-    @addChild @satellite
+    @stage.addChild @satellite
 
 module.exports = Earth
