@@ -18,3 +18,9 @@ $ ->
     objects.earth.render()
     stage.getStage().update()
   gameLoop.play()
+
+  input = new Input
+  input.arrow_left_handler = () ->
+  	console.log 'should rotate anticlockwise'
+  input.arrow_right_handler = () ->
+  	console.log 'should rotate clockwise'
