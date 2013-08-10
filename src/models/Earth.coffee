@@ -56,11 +56,6 @@ class Earth extends Entity
     @satellite.scaleX = satelliteScale
     @satellite.scaleY = satelliteScale
 
-    # @satellite.x = -satelliteWidth / 2
-    # @satellite.y = -satelliteHeight / 2
-
-    fds = (translate.screen @radius) - satelliteHeight / 2
-
     @satellite.regX = @satellite.image.width / 2
     @satellite.regY = @satellite.image.height + @radius / satelliteScale - offsetY
 

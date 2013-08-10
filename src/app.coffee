@@ -15,7 +15,7 @@ $ ->
 
   # define entities used on main stage
   entities =
-    earth: new Earth()
+    earth: new Earth
     # particles: new Particles()
 
   # add entities to stage
