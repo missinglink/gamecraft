@@ -2,13 +2,9 @@
 window.onload = (e) ->
 
   stage = require './stage'
+  earth = require './shapes/earth'
 
-  circle = new createjs.Shape();
-  circle.graphics.beginFill("red").drawCircle(0, 0, 40);
-
-  circle.x = circle.y = 50;
-
-  stage.addChild(circle);
+  stage.addChild( earth );
 
   stage.update();
 
