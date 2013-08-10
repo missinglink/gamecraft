@@ -11,7 +11,7 @@ class Gravity
     deltaY = @y - particle.y
     deltaX = @x - particle.x
     gravity_degrees = Math.atan2( deltaY, deltaX ) * 180 / Math.PI
-    @angle = Math.atan2( deltaY, deltaX ) * 180 / Math.PI
+    @angle = Math.atan2( deltaY, deltaX )
 
   tick: ( particle ) =>
 
@@ -20,21 +20,21 @@ class Gravity
     # if gravity_degrees < 0 then gravity_degrees = 360+gravity_degrees
     # console.log gravity_degrees
 
-    particle.x += @pull * Math.cos @angle
-    particle.y += @pull * Math.sin @angle
+    particle.x += @pull * Math.cos @angle * 180 / Math.PI
+    particle.y += @pull * Math.sin @angle * 180 / Math.PI
 
 
 class Thrust
 
   constructor: ( @speed, @angle ) -> null
-  setSpeed: ( @speed ) => null
+  setSpeed: ( @speed ) =>
+    if @speed < 0 then @speed = 0
+
   setAngle: ( @angle ) =>
     if @angle > 360 then @angle = @angle-360
     else if @angle <= 0 then @angle = 360+@angle
-    console.log 'angle', @angle
 
   tick: ( particle ) =>
-
     particle.x -= @speed * Math.sin @angle * Math.PI / 180
     particle.y -= @speed * Math.cos @angle * Math.PI / 180
     particle.rotation = Math.round -@angle
@@ -50,14 +50,14 @@ class Orbiter extends Entity
 
     @particle = new createjs.Bitmap 'http://initialscommand.com/main/wp-content/uploads/2011/04/spaceshipAnim.gif'
     @particle.loaded = false
-    @particle.rotation = 0
+    # @particle.rotation = 0
     @particle.x = 0
     @particle.y = 0
     @particle.image.onload = => @particle.loaded = true
 
     # @trajectory = speed: 2, angle: 90
     @gravity = new Gravity 2, 0, 0
-    @thrust = new Thrust 3, 45
+    @thrust = new Thrust 3, 90
 
     super
 
@@ -65,6 +65,7 @@ class Orbiter extends Entity
 
   tick: ->
 
+    # @thrust.setSpeed( @thrust.speed-0.01 )
     @thrust.setAngle( @thrust.angle+1 )
 
     # console.log @trajectory.angle
@@ -91,7 +92,7 @@ class Orbiter extends Entity
     # @particle.rotation = Math.round @trajectory.angle
 
     # apply gravity
-    @gravity.tick @particle
+    # @gravity.tick @particle
     @thrust.tick @particle
 
     # dest = new Gravity @trajectory.speed, 200, 200
