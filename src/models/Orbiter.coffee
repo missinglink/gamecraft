@@ -48,7 +48,7 @@ class Orbiter extends Entity
     @y = 0
     @radius = 5
 
-    @particle = new createjs.Bitmap 'http://initialscommand.com/main/wp-content/uploads/2011/04/spaceshipAnim.gif'
+    @particle = new createjs.Bitmap 'img/data-email.png'
     @particle.loaded = false
 
     @particle.scaleX = translate.screen .5
