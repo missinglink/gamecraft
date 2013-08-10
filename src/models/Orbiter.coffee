@@ -5,20 +5,19 @@ Entity = require './Entity'
 # Gravity = require '../physics/Gravity'
 Thrust = require '../physics/Thrust'
 
-spinSpeed = 200
-
-levels = [
-    { asset: 'email' }
-    { asset: 'key' }
-    { asset: 'upload' }
-]
+defaults = { asset: 'email' }
 
 class Orbiter extends Entity
 
-  constructor: ( @level = 0, thrust_speed = 3, thrust_angle = 90 ) ->
+  constructor: (thrust_speed = 3, thrust_angle = 90, @options = defaults) ->
     super()
-    # @gravity = new Gravity (translate.screen 2), 0, 0
+
+    # @rotationAngle = 0
+    while not @rotationAngle? or @rotationAngle is 0
+      @rotationAngle = Math.round( Math.random() * 4 )-2
+    
     @thrust = new Thrust (translate.screen thrust_speed), thrust_angle
+    @spinSpeed = 200 / thrust_speed
 
   tick: ->
 
@@ -36,8 +35,7 @@ class Orbiter extends Entity
     @x = 0
     @y = 0
 
-    assetName = levels[@level].asset
-    @particle = new createjs.Bitmap "img/data-#{assetName}.png"
+    @particle = new createjs.Bitmap "img/data-#{@options.asset}.png"
     @particle.loaded = false
 
     @particle.scaleX = translate.screen .5
@@ -54,10 +52,10 @@ class Orbiter extends Entity
   tick: ->
     super
 
-    @thrust.setSpeed translate.screen( spinSpeed * @lastFrameLength / 1000 )
+    @thrust.setSpeed translate.screen( @spinSpeed * @lastFrameLength / 1000 )
 
     # @thrust.setSpeed( @thrust.speed-0.01 )
-    @thrust.setAngle( @thrust.angle+1 )
+    @thrust.setAngle( @thrust.angle+@rotationAngle )
 
     @stage.x = translate.x 0
     @stage.y = translate.y 0
