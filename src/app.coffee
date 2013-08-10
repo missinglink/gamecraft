@@ -5,6 +5,7 @@ Particles = require './models/Particles'
 Input = require './Input'
 Loop = require './models/Loop'
 controls = require './controls'
+status = require './status'
 
 $ ->
   left_pressed = false
@@ -12,6 +13,9 @@ $ ->
 
   # initialize stage
   stage.init()
+
+  # initialise status (life)
+  status.init()
 
   # define entities used on main stage
   entities =
