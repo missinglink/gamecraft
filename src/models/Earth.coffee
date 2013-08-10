@@ -13,7 +13,11 @@ class Earth extends Entity
     super
 
   tick: ->
-    @stage.rotation+=10
+    @stage.rotation += 1
+    @satellite.scaleX = translate.screen .5
+    @satellite.scaleY = translate.screen .5
+    @satellite.x = translate.screen -@radius / 2
+    @satellite.y = translate.screen -@satellite.image.height
 
   render: ->
 
@@ -25,10 +29,6 @@ class Earth extends Entity
     @stage.addChild @globe
     
     @satellite = new createjs.Bitmap 'img/satellite-dish.png'
-    @satellite.x = - @radius / 2
-    @satellite.y = - @radius / 2
-    @satellite.scaleX = translate.screen .7
-    @satellite.scaleY = translate.screen .7
     @stage.addChild @satellite
 
 module.exports = Earth
