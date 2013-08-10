@@ -9,6 +9,7 @@ class Entity
 
     @render()
 
-  render: ->
+  render: -> null
+  tick: -> null
 
 module.exports = Entity
