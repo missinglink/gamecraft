@@ -20,6 +20,8 @@ class Earth extends Entity
     @stage.x = translate.x 0
     @stage.y = translate.y 0
 
+    @stage.rotation+=10
+
     @stage.addChild @globe
     
     @satellite = new createjs.Bitmap 'img/satellite-dish.png'
