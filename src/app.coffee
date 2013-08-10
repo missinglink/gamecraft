@@ -4,5 +4,5 @@ Earth = require './models/Earth'
 
 $ ->
   stage.init()
-  stage.getStage().addChild new Earth()
+  stage.add new Earth()
   stage.getStage().update()
