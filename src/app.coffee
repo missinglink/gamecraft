@@ -5,4 +5,5 @@ window.onload = (e) ->
   Earth = require './models/Earth'
 
   stage.addChild new Earth()
+
   stage.update()

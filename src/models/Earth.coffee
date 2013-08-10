@@ -1,16 +1,23 @@
 
-class Earth extends createjs.Shape
+class Earth extends createjs.Stage
 
   constructor: ->
     super
 
     radius = 100
 
-    @graphics.beginFill('red').drawCircle 0, 0, radius
+    @globe = new createjs.Shape()
 
+    @globe.graphics.beginFill('red').drawCircle 0, 0, radius
     @x = Math.round( $('body').width() / 2 )
     @y = Math.round( $('body').height() / 2 )
 
-    console.log @x, @y
+    @addChild @globe
+    
+    @satellite = new createjs.Bitmap 'img/satellite-dish.png'
+    @satellite.x = -50
+    @satellite.y = -220
+
+    @addChild @satellite
 
 module.exports = Earth
