@@ -16,6 +16,7 @@ class Input
 			else if e.keyCode == KEY_RIGHT
 				@arrow_right_handler()
 
+	# shortcuts
 	key_arrow_left_event: ->
 		@arrow_left_handler()
 
