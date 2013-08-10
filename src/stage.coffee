@@ -18,9 +18,9 @@ module.exports =
     el.css size
     el.attr size
 
-    # if device.isRetina()
-    #   el.attr width: size.width * 2, height: size.height * 2
-    #   translate.setRatio 2
+    if device.isRetina()
+      el.attr width: size.width * 2, height: size.height * 2
+      translate.setRatio 2
 
     stage = new createjs.Stage el[0]
 
