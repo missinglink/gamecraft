@@ -1,7 +1,8 @@
 
 window.onload = (e) ->
 
-  stage = new createjs.Stage("game-stage");
+  stage = require './stage'
+
   circle = new createjs.Shape();
   circle.graphics.beginFill("red").drawCircle(0, 0, 40);
 
