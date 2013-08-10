@@ -38,6 +38,9 @@ $ ->
     timeDelta = gameLoop.getTimeDelta()
     gameModel.tick(timeDelta)
 
+    newValue = gameModel.timeLeft / gameModel.duration * 100
+    status.setLife newValue
+
     # update entities
     for name, entity of entities
       entity.tick()

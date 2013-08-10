@@ -2,7 +2,7 @@
 class GameModel
 
 	constructor: ->
-		@duration = 5
+		@duration = 15
 		@timeLeft = @duration
 
 	tick: (timeDelta) =>
