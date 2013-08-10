@@ -15,11 +15,11 @@ class Particles extends Entity
       text: 0
       font:
         style: 'bold'
-        size: '12px'
+        size: '16px'
         face: 'Arial'
       color: 'green'
-      width: 10
-      height: 10
+      width: 14
+      height: 14
       rotation: 0
       x: 0
       y: 0
