@@ -2,7 +2,7 @@
 stage = require '../stage'
 translate = require '../translate'
 Entity = require './Entity'
-# Gravity = require '../physics/Gravity'
+Gravity = require '../physics/Gravity'
 Thrust = require '../physics/Thrust'
 
 class Orbiter extends Entity
@@ -12,9 +12,10 @@ class Orbiter extends Entity
 
     # @rotationAngle = 0
     while not @rotationAngle? or @rotationAngle is 0
-      @rotationAngle = Math.round( Math.random() * 4 )-2
+      @rotationAngle = Math.round( Math.random() * 1 )-0.5
     
     @thrust = new Thrust (translate.screen thrust_speed), thrust_angle
+    @gravity = new Gravity 10, 0, 0
     @spinSpeed = 30 * thrust_speed
 
   tick: ->
@@ -43,13 +44,10 @@ class Orbiter extends Entity
     @particle.y = 0
     @particle.image.onload = => @particle.loaded = true
 
-    super
-
     @stage.addChild @particle
 
   tick: ->
-    super
-
+    super()
     @thrust.setSpeed translate.screen( @spinSpeed * @lastFrameLength / 1000 )
 
     # @thrust.setSpeed( @thrust.speed-0.01 )

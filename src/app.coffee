@@ -25,19 +25,7 @@ $ ->
   @itemsFactory = new ItemsFactory stage
 
   # define entities used on main stage
-  entities =
-    earth: new Earth()
-    # orbiter1: new Orbiter()
-    # orbiter2: new Orbiter( 3, 0 )
-    # orbiter3: new Orbiter( 1, 5, 45 )
-    # orbiter4: new Orbiter( 2, 4, 90 )
-    # orbiter5: new Orbiter( 0, 3, 135 )
-    # orbiter6: new Orbiter( 1, 5, 180 )
-    # orbiter7: new Orbiter( 0, 4, 225 )
-    # orbiter8: new Orbiter( 2, 3, 270 )
-    # orbiter9: new Orbiter( 0, 5, 315 )
-    # orbiter4: new Orbiter()
-    # particles1: new Particles()
+  entities = earth: new Earth()
 
   # add entities to stage
   for name, entity of entities
