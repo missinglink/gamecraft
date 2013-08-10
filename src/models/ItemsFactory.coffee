@@ -1,6 +1,8 @@
 
 Orbiter = require './Orbiter'
 
+loopOn = false
+
 types =
   email: { asset: 'email', speed: { min: 10, max: 15 } }
   upload: { asset: 'upload', speed: { min: 15, max: 20 } }
@@ -22,7 +24,8 @@ class ItemsFactory
     @level = 0
     @entities = []
 
-    @spawnNext()
+    if loopOn then @spawnNext()
+    ($ 'body').on 'click', => @spawnNext()
 
   spawnNext: ->
     type = levels[@level].itemTypes[Math.round(Math.random levels[@level].itemTypes.length)]
@@ -33,7 +36,7 @@ class ItemsFactory
     @entities.push entity
     waitRange = levels[@level].spawnDelay
     wait = Math.random() * waitRange.min + Math.random() * (waitRange.max - waitRange.min)
-    setTimeout (=> @spawnNext()), wait
+    if loopOn then setTimeout (=> @spawnNext()), wait
 
   tick: -> entity.tick() for entity in @entities
 

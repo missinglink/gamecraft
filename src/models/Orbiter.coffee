@@ -6,6 +6,8 @@ Gravity = require '../physics/Gravity'
 Thrust = require '../physics/Thrust'
 Tail = require './Tail'
 
+earthRadius = 100
+
 class Orbiter extends Entity
 
   constructor: (@options, thrust_speed = 3, thrust_angle = 90) ->
