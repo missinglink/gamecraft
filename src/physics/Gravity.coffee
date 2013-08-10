@@ -6,7 +6,7 @@ class Gravity
   updateAngle: ( particle ) =>
     deltaY = @y - particle.y
     deltaX = @x - particle.x
-    gravity_degrees = Math.atan2( deltaY, deltaX ) * 180 / Math.PI
+    # gravity_degrees = Math.atan2( deltaY, deltaX ) * 180 / Math.PI
     @angle = Math.atan2( deltaY, deltaX )
 
   tick: ( particle ) =>
