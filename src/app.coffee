@@ -1,13 +1,18 @@
 
 window.onload = (e) ->
 
-  stage = new createjs.Stage("game-stage");
-  circle = new createjs.Shape();
-  circle.graphics.beginFill("red").drawCircle(0, 0, 40);
+  wrap = $ "#game-stage"
 
-  circle.x = circle.y = 50;
+  size = width: ($ window).width(), height: ($ window).height()
+  wrap.css size
+  wrap.attr size
 
-  stage.addChild(circle);
+  stage = new createjs.Stage wrap
+  circle = new createjs.Shape()
+  circle.graphics.beginFill("red").drawCircle 0, 0, 40
 
-  stage.update();
+  circle.x = circle.y = 50
 
+  stage.addChild circle
+
+  stage.update()
