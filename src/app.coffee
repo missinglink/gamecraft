@@ -1,6 +1,9 @@
 
 stage = require './stage'
 Earth = require './models/Earth'
+Particles = require './models/Particles'
+Input = require './Input'
+
 Loop = require './models/Loop'
 
 $ ->
@@ -8,9 +11,12 @@ $ ->
 
   objects = {
     earth: new Earth()
+    particles: new Particles()
   }
 
-  stage.add objects.earth
+  for name, object of objects
+    stage.add object
+
   gameLoop = new Loop
 
   gameLoop.use ->
@@ -21,3 +27,9 @@ $ ->
     stage.getStage().update()
 
   gameLoop.play()
+
+  input = new Input
+  input.arrow_left_handler = () ->
+  	console.log 'should rotate anticlockwise'
+  input.arrow_right_handler = () ->
+  	console.log 'should rotate clockwise'
