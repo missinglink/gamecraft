@@ -48,16 +48,19 @@ class Orbiter extends Entity
     @y = 0
     @radius = 5
 
-    @particle = new createjs.Bitmap 'http://initialscommand.com/main/wp-content/uploads/2011/04/spaceshipAnim.gif'
+    @particle = new createjs.Bitmap 'img/data-email.png'
     @particle.loaded = false
-    # @particle.rotation = 0
+
+    @particle.scaleX = translate.screen .5
+    @particle.scaleY = translate.screen .5
+
     @particle.x = 0
     @particle.y = 0
     @particle.image.onload = => @particle.loaded = true
 
     # @trajectory = speed: 2, angle: 90
-    @gravity = new Gravity 2, 0, 0
-    @thrust = new Thrust 3, 90
+    @gravity = new Gravity (translate.screen 2), 0, 0
+    @thrust = new Thrust (translate.screen 3), 90
 
     super
 
