@@ -7,6 +7,7 @@ Input = require './Input'
 Loop = require './models/Loop'
 controls = require './controls'
 status = require './status'
+GameModel = require './models/GameModel'
 
 $ ->
   left_pressed = false
@@ -20,6 +21,8 @@ $ ->
 
   ($ 'body').on 'click', ->
     status.removeLife 5
+
+  gameModel = new GameModel()
 
   # define entities used on main stage
   entities =
@@ -35,12 +38,19 @@ $ ->
   gameLoop = new Loop
   gameLoop.use ->
 
+    timeDelta = gameLoop.getTimeDelta()
+    gameModel.tick(timeDelta)
+
     # update entities
     for name, entity of entities
       entity.tick()
 
     # repaint stage
     stage.getStage().update()
+
+    if gameModel.isGameOver()
+      alert 'GAME FUCKING OVER!'
+      gameLoop.pause()
 
   gameLoop.play()
 
