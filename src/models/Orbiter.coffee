@@ -20,6 +20,8 @@ class Orbiter extends Entity
     @tail = new Tail()
     @stage.addChild @tail.stage
 
+    setInterval ( => @tail.tick @particle ), 50
+
     @spinSpeed = 30 * thrust_speed
 
   render: ->
@@ -51,6 +53,5 @@ class Orbiter extends Entity
 
     # @gravity.tick @particle
     @thrust.tick @particle
-    if Math.random() > 0.9 then @tail.tick @particle
 
 module.exports = Orbiter

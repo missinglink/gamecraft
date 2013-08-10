@@ -67,7 +67,7 @@ class Tail extends Entity
     text.date = (new Date()).getTime()
 
     @tails = @tails.filter (tail) =>
-      if tail.date < (new Date()).getTime() - 1000
+      if tail.date < (new Date()).getTime() - 2000
         @stage.removeChild tail
         return false
       return true
