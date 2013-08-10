@@ -29,7 +29,6 @@ class ItemsFactory
     options = types[type]
     speed = options.speed.min + Math.random() * options.speed.max - options.speed.min
     entity = new Orbiter options, speed, Math.random() * 360
-    console.log speed
     @stage.add entity
     @entities.push entity
     waitRange = levels[@level].spawnDelay
