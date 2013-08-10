@@ -1,8 +1,8 @@
 
-window.onload = (e) ->
+stage = require './stage'
+Earth = require './models/Earth'
 
-  stage = require './stage'
-  Earth = require './models/Earth'
-
-  stage.addChild new Earth()
-  stage.update()
+$ ->
+  stage.init()
+  stage.getStage().addChild new Earth()
+  stage.getStage().update()
