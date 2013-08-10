@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "browserify": "~2.26.0",
-    "ycssmin": "~1.0.1"
+    "ycssmin": "~1.0.1",
+    "express": "~3.3.4"
   }
 }
