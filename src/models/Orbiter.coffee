@@ -3,25 +3,25 @@ stage = require '../stage'
 translate = require '../translate'
 Entity = require './Entity'
 
-# class Gravity
+class Gravity
 
-#   constructor: ( @pull, @x, @y ) -> null
+  constructor: ( @pull, @x, @y ) -> null
 
-#   updateAngle: ( particle ) =>
-#     deltaY = @y - particle.y
-#     deltaX = @x - particle.x
-#     gravity_degrees = Math.atan2( deltaY, deltaX ) * 180 / Math.PI
-#     @angle = Math.atan2( deltaY, deltaX ) * 180 / Math.PI
+  updateAngle: ( particle ) =>
+    deltaY = @y - particle.y
+    deltaX = @x - particle.x
+    gravity_degrees = Math.atan2( deltaY, deltaX ) * 180 / Math.PI
+    @angle = Math.atan2( deltaY, deltaX ) * 180 / Math.PI
 
-#   tick: ( particle ) =>
+  tick: ( particle ) =>
 
-#     @updateAngle particle
+    @updateAngle particle
 
-#     # if gravity_degrees < 0 then gravity_degrees = 360+gravity_degrees
-#     # console.log gravity_degrees
+    # if gravity_degrees < 0 then gravity_degrees = 360+gravity_degrees
+    # console.log gravity_degrees
 
-#     particle.x += @pull * Math.cos @angle
-#     particle.y += @pull * Math.sin @angle
+    particle.x += @pull * Math.cos @angle
+    particle.y += @pull * Math.sin @angle
 
 
 class Thrust
@@ -37,12 +37,7 @@ class Thrust
 
     particle.x -= @speed * Math.sin @angle * Math.PI / 180
     particle.y -= @speed * Math.cos @angle * Math.PI / 180
-    # particle.x -= @speed
-    # particle.y -= @speed
-    particle.rotation = Math.round @angle
-    # particle.x += @speed
-
-
+    particle.rotation = Math.round -@angle
 
 
 class Orbiter extends Entity
@@ -53,7 +48,7 @@ class Orbiter extends Entity
     @y = 0
     @radius = 5
 
-    @particle = new createjs.Bitmap 'http://www.someicons.com/desktop-icons-games/donkey-kong-msl/Banana.gif'
+    @particle = new createjs.Bitmap 'http://initialscommand.com/main/wp-content/uploads/2011/04/spaceshipAnim.gif'
     @particle.loaded = false
     @particle.rotation = 0
     @particle.x = 0
@@ -61,8 +56,8 @@ class Orbiter extends Entity
     @particle.image.onload = => @particle.loaded = true
 
     # @trajectory = speed: 2, angle: 90
-    # @gravity = new Gravity 2, 0, 0
-    @thrust = new Thrust 2, 45
+    @gravity = new Gravity 2, 0, 0
+    @thrust = new Thrust 3, 45
 
     super
 
@@ -96,7 +91,7 @@ class Orbiter extends Entity
     # @particle.rotation = Math.round @trajectory.angle
 
     # apply gravity
-    # @gravity.tick @particle
+    @gravity.tick @particle
     @thrust.tick @particle
 
     # dest = new Gravity @trajectory.speed, 200, 200
