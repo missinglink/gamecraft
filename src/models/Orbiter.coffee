@@ -9,7 +9,7 @@ spinSpeed = 200
 
 class Orbiter extends Entity 
 
-  constructor: ( thrust_speed=3, thrust_angle=90 ) ->
+  constructor: ( thrust_speed, thrust_angle=90 ) ->
     super()
     # @gravity = new Gravity (translate.screen 2), 0, 0
     @thrust = new Thrust (translate.screen thrust_speed), thrust_angle

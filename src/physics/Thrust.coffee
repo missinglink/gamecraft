@@ -2,6 +2,7 @@
 class Thrust
 
   constructor: ( @speed, @angle ) -> null
+
   setSpeed: ( @speed ) =>
     if @speed < 0 then @speed = 0
 
