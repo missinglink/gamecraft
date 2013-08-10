@@ -1,12 +1,20 @@
 
 win = $ window
-el = $ '#game-stage'
+el = null
 
-init = ->
-  size = width: win.width(), height: win.height()
-  el.css size
-  el.attr size
+size = width: 0, height: 0
+stage = null
 
-$ init
+module.exports =
 
-module.exports = new createjs.Stage el[0]
+  init: ->
+    el = $ '#game-stage'
+    size.width = win.width()
+    size.height = win.height()
+    el.css size
+    el.attr size
+    stage = new createjs.Stage el[0]
+
+  getStage: -> stage
+
+  geetSize: -> size
