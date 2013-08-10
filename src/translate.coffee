@@ -1,14 +1,16 @@
 
-stage = require './stage'
+win = $ window
 
 ratio = 1
 
 module.exports =
 
-  world: (obj) -> obj * ratio
+  world: (obj) -> obj / ratio
 
-  screen: (obj) -> obj / ratio
+  screen: (obj) -> obj * ratio
 
-  x: (x) -> stage.getSize().width / 2 + x
+  x: (x) -> win.width() * ratio / 2 + x
 
-  y: (y) -> stage.getSize().height / 2 + y
+  y: (y) -> win.height() * ratio / 2 + y
+
+  setRatio: (val) -> ratio = (val)
