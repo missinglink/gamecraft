@@ -2,6 +2,7 @@
 stage = require './stage'
 Earth = require './models/Earth'
 Particles = require './models/Particles'
+Orbiter = require './models/Orbiter'
 Input = require './Input'
 Loop = require './models/Loop'
 controls = require './controls'
@@ -16,11 +17,8 @@ $ ->
   # define entities used on main stage
   entities =
     earth: new Earth()
-    particles1: new Particles()
-    particles2: new Particles()
-    particles3: new Particles()
-    particles4: new Particles()
-    particles5: new Particles()
+    orbiter: new Orbiter()
+    # particles1: new Particles()
 
   # add entities to stage
   for name, entity of entities
