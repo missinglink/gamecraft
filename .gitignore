@@ -2,3 +2,4 @@ node_modules
 lib
 js/app.js
 css
+.DS_Store
