@@ -3,10 +3,11 @@ stage = require './stage'
 Earth = require './models/Earth'
 Particles = require './models/Particles'
 Input = require './Input'
-
 Loop = require './models/Loop'
 
 $ ->
+
+  # initialize stage
   stage.init()
 
   # define entities used on main stage
