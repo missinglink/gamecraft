@@ -13,38 +13,38 @@ module.exports = (grunt) =>
       development:
         options: compress: true, optimization: 2, yuicompress: true
         files:
-          "./www/css/index.css": "./www/less/index.less"
+          "./css/index.css": "./less/index.less"
 
     coffee:
       development:
         options: bare: true
         files: [
           expand: true
-          cwd: 'www/src/',
+          cwd: 'src/',
           src: [ "**/*.coffee" ]
-          dest: "./www/lib/"
+          dest: "./lib/"
           ext: '.js'
         ]
 
     browserify2:
       compile:
-        entry: './www/lib/app.js'
-        compile: './www/js/app.js'
+        entry: './lib/app.js'
+        compile: './js/app.js'
 
     watch:
 
       less:
-        files: [ './www/less/*/**.less', './www/less/*.less' ]
+        files: [ './less/*/**.less', './less/*.less' ]
         tasks: 'less'
         options: interrupt: true
 
       coffee:
-        files: './www/src/**/*.coffee'
+        files: './src/**/*.coffee'
         tasks: 'coffee'
         options: interrupt: true
 
       bundle:
-        files: [ './www/src/**/*.coffee' ]
+        files: [ './src/**/*.coffee' ]
         tasks: [ 'coffee', 'browserify2' ]
         options: interrupt: true
 
@@ -62,10 +62,6 @@ module.exports = (grunt) =>
           {
             grunt: true,
             args: [ 'watch:bundle' ]
-          }
-          {
-            grunt: true,
-            args: [ 'watch:handlebars' ]
           }
         ]
 
