@@ -62,11 +62,11 @@ class Earth extends Entity
     @globe.y = translate.screen -@radius
 
   updateSatellite: ->
-    satelliteScale = translate.screen .2
+    satelliteScale = translate.screen .4
     satelliteWidth = @satellite.image.width * satelliteScale
     satelliteHeight = @satellite.image.height * satelliteScale
 
-    offsetY = translate.screen 10
+    offsetY = translate.screen 2
 
     @satellite.scaleX = satelliteScale
     @satellite.scaleY = satelliteScale
