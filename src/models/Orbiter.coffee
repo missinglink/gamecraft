@@ -71,9 +71,9 @@ class Orbiter extends Entity
     if @status is 1 and distance < earthRadius
       @status = 2
       console.log 'HIT'
-      angle = Math.atan @particle.y, @particle.x
+      angle = Math.atan2 -@particle.y, -@particle.x
       angle = geometry.radToDeg angle
-      (_ @).emit 'hit', [ angle ]
+      (_ @).emit 'hit', [ angle, @particle ]
       @particle.alpha = 0
 
 module.exports = Orbiter

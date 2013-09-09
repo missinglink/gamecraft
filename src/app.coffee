@@ -25,7 +25,8 @@ $ ->
   @itemsFactory = new ItemsFactory stage
 
   # define entities used on main stage
-  entities = earth: new Earth()
+  earth = new Earth()
+  entities = earth: earth
 
   # add entities to stage
   for name, entity of entities
@@ -37,11 +38,13 @@ $ ->
 
     @itemsFactory.tick()
 
+    (_ @itemsFactory).on 'hit', (angle, particle) => earth.hit angle, particle
+
     timeDelta = gameLoop.getTimeDelta()
     gameModel.tick(timeDelta)
 
-    newValue = gameModel.timeLeft / gameModel.duration * 100
-    status.setLife newValue
+    # newValue = gameModel.timeLeft / gameModel.duration * 100
+    # status.setLife newValue
 
     # update entities
     for name, entity of entities

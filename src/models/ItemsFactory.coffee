@@ -33,11 +33,14 @@ class ItemsFactory
     speed = options.speed.min + Math.random() * options.speed.max - options.speed.min
     entity = new Orbiter options, speed, Math.random() * 360
     @stage.add entity
+    (_ entity).on 'hit', (angle, particle) => (_ @).emit 'hit', [ angle, particle ]
     @entities.push entity
     waitRange = levels[@level].spawnDelay
     wait = Math.random() * waitRange.min + Math.random() * (waitRange.max - waitRange.min)
     if loopOn then setTimeout (=> @spawnNext()), wait
 
-  tick: -> entity.tick() for entity in @entities
+  tick: ->
+    for entity in @entities
+      entity.tick()
 
 module.exports = ItemsFactory

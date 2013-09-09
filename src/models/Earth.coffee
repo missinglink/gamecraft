@@ -3,6 +3,8 @@ stage = require '../stage'
 translate = require '../translate'
 Entity = require './Entity'
 controls = require '../controls'
+geometry = require '../helpers/geometry'
+status = require '../status'
 
 speedMultiplier = 50
 maxSpeed = 4
@@ -34,6 +36,14 @@ class Earth extends Entity
     else if @currentSpeed < -maxSpeed then @currentSpeed = -maxSpeed
 
     @satellite.rotation += @lastFrameLength * @currentSpeed * speedMultiplier / 1000
+
+  hit: (angle, particle) ->
+    if Math.abs angle - @satellite.rotation < 3
+      console.log 'Nice 1'
+    else
+      console.log 'Shit!'
+      status.removeLife 5
+    
 
   render: ->
 
